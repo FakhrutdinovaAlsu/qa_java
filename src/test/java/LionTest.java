@@ -67,10 +67,16 @@ public class LionTest {
         assertEquals(expectedFood,lion.getFood());
     }
 
-    @Test(expected = Exception.class)
+    @Test
     public void testGetFoodForLionThrowsException() throws Exception {
+        String error = "Неизвестный вид животного, используйте значение Травоядное или Хищник";
         Lion lion = new Lion(sex, feline);
-        when(feline.getFood("Хищник")).thenThrow((new Exception()));
-        lion.getFood();
+        when(feline.getFood("Хищник")).thenThrow((new Exception(error)));
+        try {
+            lion.getFood();
+            fail("Ожидалось исключение");
+        } catch (Exception exception) {
+            assertEquals(error, exception.getMessage());
+        }
     }
 }
