@@ -43,9 +43,14 @@ public class LionTest {
         assertEquals(1,lion.getKittens());
     }
 
-    @Test(expected = Exception.class)
+    @Test
     public void testWithIncorrectSex() throws Exception {
-        Lion lion = new Lion("Мужской",feline);
+        try {
+            Lion lion = new Lion("Мужской", feline);
+            fail("Тест не пройден");
+        } catch (Exception exception) {
+            assertEquals("Используйте допустимые значения пола животного - самей или самка",exception.getMessage());
+        }
     }
 
     @Test
