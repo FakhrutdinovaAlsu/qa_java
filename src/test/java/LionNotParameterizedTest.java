@@ -12,7 +12,7 @@ import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class LionNegativeTest {
+public class LionNotParameterizedTest {
 
     @Mock
     private Feline feline;
